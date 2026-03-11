@@ -5,7 +5,7 @@ import type { ProductoPublico } from '@/lib/baserow'
 import PriceModal, { type ItemActualizado } from './PriceModal'
 
 const MIN_UNIDADES = 100
-const WA_NUMBER = '5491112345678'
+const WA_NUMBER = '5491151267426'
 
 function formatARS(n: number) {
   return n.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })

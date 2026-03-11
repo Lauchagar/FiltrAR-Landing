@@ -9,9 +9,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Mate Wholesale — Bombillas por Mayor | Fábrica Argentina',
+  title: 'FiltrAR | Bombillas por Mayor',
   description:
     'Venta mayorista de bombillas para mate. Precios directos de fábrica para distribuidores y comercios. Pedido mínimo 100 unidades. Envíos a todo el país.',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
@@ -21,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es-AR" className="scroll-smooth">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`} suppressHydrationWarning>{children}</body>
     </html>
   )
 }

@@ -108,6 +108,15 @@ body {
   transition: width 0.3s ease;
 }
 
+/* Highlight pulsante para producto destacado en catálogo */
+@keyframes cardHighlight {
+  0%, 100% { box-shadow: 0 0 0 2px transparent; }
+  50%       { box-shadow: 0 0 0 2px rgba(212, 168, 67, 0.85), 0 0 28px rgba(212, 168, 67, 0.2); }
+}
+.card-highlight {
+  animation: cardHighlight 0.65s ease-in-out 4;
+}
+
 /* Ocultar flechas nativas de inputs type=number */
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {

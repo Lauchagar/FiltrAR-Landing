@@ -23,7 +23,14 @@ function getImagenProducto(id: number): string {
   return IMAGEN_FALLBACK
 }
 
-export default async function CatalogoPage() {
+export default async function CatalogoPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ p?: string }>
+}) {
+  const params = await searchParams
+  const highlightId = params.p ? Number(params.p) : undefined
+
   let productos: ProductoPublico[] = []
   let error = false
 
@@ -78,7 +85,7 @@ export default async function CatalogoPage() {
 
           {/* Grilla interactiva */}
           {!error && productos.length > 0 && (
-            <CatalogoCalculadora productos={productos} imagenes={imagenes} />
+            <CatalogoCalculadora productos={productos} imagenes={imagenes} highlightId={highlightId} />
           )}
 
           {!error && productos.length === 0 && (

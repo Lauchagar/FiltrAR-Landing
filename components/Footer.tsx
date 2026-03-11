@@ -1,5 +1,5 @@
 const WA_LINK =
-  'https://wa.me/5491112345678?text=Hola!%20Quiero%20solicitar%20el%20cat%C3%A1logo%20de%20precios%20mayoristas'
+  'https://wa.me/5491151267426?text=Hola!%20Quiero%20solicitar%20el%20cat%C3%A1logo%20de%20precios%20mayoristas'
 
 export default function Footer() {
   return (
@@ -9,9 +9,12 @@ export default function Footer() {
 
           {/* Marca */}
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-xl">🧉</span>
-              <span className="font-bold text-white text-base">Mate Wholesale</span>
+            <div className="mb-3">
+              <img
+                src="/logo_nuevo.png"
+                alt="FiltrAR"
+                className="h-9 w-auto object-contain"
+              />
             </div>
             <p className="text-stone-600 text-xs leading-relaxed max-w-[180px]">
               Fábrica y distribuidora mayorista de bombillas. Argentina.
@@ -22,22 +25,22 @@ export default function Footer() {
           <div className="flex flex-col items-start sm:items-center gap-3">
             <p className="text-stone-500 text-xs uppercase tracking-widest font-semibold mb-1">Contacto</p>
             <a
-              href="mailto:ventas@matewholesale.com.ar"
+              href="mailto:filtrargentinabombillas@gmail.com"
               className="inline-flex items-center gap-2 text-stone-400 hover:text-brand-400 text-sm transition-colors"
             >
               <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
               </svg>
-              ventas@matewholesale.com.ar
+              filtrargentinabombillas@gmail.com
             </a>
             <a
-              href="tel:+5491165432100"
+              href="tel:+5491151267426"
               className="inline-flex items-center gap-2 text-stone-400 hover:text-brand-400 text-sm transition-colors"
             >
               <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
               </svg>
-              +54 9 11 6543-2100
+              +54 9 11 5126-7426
             </a>
           </div>
 
@@ -60,7 +63,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-surface-700/40 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-stone-700 text-xs">&copy; 2026 Mate Wholesale. Todos los derechos reservados.</p>
+          <p className="text-stone-700 text-xs">&copy; 2026 FiltrAR. Todos los derechos reservados.</p>
           <span className="text-stone-700 text-xs font-medium tracking-wide">
             Venta exclusiva mayorista &middot; Industria Argentina
           </span>

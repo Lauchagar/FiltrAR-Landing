@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 const WA_LINK =
-  'https://wa.me/5491112345678?text=Hola!%20Quiero%20solicitar%20el%20cat%C3%A1logo%20de%20precios%20mayoristas'
+  'https://wa.me/5491151267426?text=Hola!%20Quiero%20solicitar%20el%20cat%C3%A1logo%20de%20precios%20mayoristas'
 
 export default function WhatsAppFloat() {
   const [visible, setVisible] = useState(true)

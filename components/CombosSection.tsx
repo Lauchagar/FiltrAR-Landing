@@ -1,5 +1,5 @@
 const WA_COMBO =
-  'https://wa.me/5491112345678?text=Hola!%20Quiero%20armar%20un%20combo%20surtido%20de%20bombillas.%20%C2%BFMe%20pod%C3%A9s%20enviar%20el%20cat%C3%A1logo?'
+  'https://wa.me/5491151267426?text=Hola!%20Quiero%20armar%20un%20combo%20surtido%20de%20bombillas.%20%C2%BFMe%20pod%C3%A9s%20enviar%20el%20cat%C3%A1logo?'
 
 const WA_ICON = (
   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -22,19 +22,27 @@ export default function CombosSection() {
             requisito es llegar a un{' '}
             <strong className="text-white">mínimo de 100 unidades en total</strong>.
           </p>
-          <p className="text-stone-500 text-base leading-relaxed">
-            Por ejemplo: 40 Clásicas Chatas + 35 Filtro Cuchara + 25 Pico de Loro = pedido listo. Así podés
-            testear qué modelos rotan mejor en tu zona sin comprometerte con un solo tipo.
-          </p>
-          <a
-            href={WA_COMBO}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 bg-brand-400 hover:bg-brand-500 text-surface-950 font-bold px-6 py-3.5 rounded-xl transition-all hover:shadow-lg hover:shadow-brand-400/25 hover:-translate-y-0.5 text-sm"
-          >
-            {WA_ICON}
-            Armar mi combo por WhatsApp
-          </a>
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href={WA_COMBO}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 bg-brand-400 hover:bg-brand-500 text-surface-950 font-bold px-6 py-3.5 rounded-xl transition-all hover:shadow-lg hover:shadow-brand-400/25 hover:-translate-y-0.5 text-sm"
+            >
+              {WA_ICON}
+              Armar mi combo por WhatsApp
+            </a>
+            <span className="text-stone-500 text-sm font-medium">o</span>
+            <a
+              href="/catalogo"
+              className="inline-flex items-center gap-2 bg-surface-700/60 hover:bg-surface-600/60 border border-surface-600/60 hover:border-brand-400/40 text-white font-bold px-6 py-3.5 rounded-xl transition-all hover:shadow-lg hover:-translate-y-0.5 text-sm"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              Armar mi combo acá
+            </a>
+          </div>
         </div>
       </div>
     </section>

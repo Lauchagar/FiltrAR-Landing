@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 
 const WA_LINK =
-  'https://wa.me/5491112345678?text=Hola!%20Quiero%20solicitar%20el%20cat%C3%A1logo%20de%20precios%20mayoristas'
+  'https://wa.me/5491151267426?text=Hola!%20Quiero%20solicitar%20el%20cat%C3%A1logo%20de%20precios%20mayoristas'
 
 const WA_ICON = (
   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -37,11 +38,15 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
-            <a href="/" className="flex items-center gap-2 group">
-              <span className="text-2xl">🧉</span>
-              <span className="text-lg font-bold text-white group-hover:text-brand-400 transition-colors">
-                Mate Wholesale
-              </span>
+            <a href="/" className="flex items-center">
+              <Image
+                src="/logo_nuevo.png"
+                alt="FiltrAR"
+                width={120}
+                height={48}
+                className="h-10 w-auto object-contain"
+                priority
+              />
             </a>
 
             <div className="hidden md:flex items-center gap-8">
@@ -64,7 +69,7 @@ export default function Navbar() {
                 className="inline-flex items-center gap-2 bg-brand-400 hover:bg-brand-500 text-surface-950 text-sm font-semibold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg hover:shadow-brand-400/20"
               >
                 {WA_ICON}
-                Pedir Precio
+                Pedir catálogo
               </a>
             </div>
 
@@ -88,7 +93,7 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between p-4 border-b border-surface-600">
-          <span className="text-lg font-bold">🧉 Mate Wholesale</span>
+          <span className="text-lg font-bold">🧉 FiltrAR</span>
           <button onClick={closeMenu} className="text-white p-2" aria-label="Cerrar menú">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

@@ -1,5 +1,5 @@
 const WA_PRECIOS =
-  'https://wa.me/5491112345678?text=Hola!%20Quiero%20solicitar%20la%20lista%20de%20precios%20mayoristas'
+  'https://wa.me/5491151267426?text=Hola!%20Quiero%20solicitar%20la%20lista%20de%20precios%20mayoristas'
 
 const WA_ICON_SM = (
   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -22,7 +22,7 @@ export default function HeroSection() {
 
             <p className="text-stone-400 text-lg sm:text-xl leading-relaxed max-w-xl">
               Venta directa de fábrica para distribuidores y comercios. Alta calidad en acero inoxidable
-              304 y alpaca.{' '}
+              304 de primera calidad.{' '}
               <strong className="text-white font-semibold">Pedido mínimo 100 unidades.</strong>
             </p>
 
@@ -34,7 +34,7 @@ export default function HeroSection() {
                 className="inline-flex items-center gap-2.5 bg-brand-400 hover:bg-brand-500 text-surface-950 font-bold px-7 py-4 rounded-xl transition-all hover:shadow-xl hover:shadow-brand-400/25 hover:-translate-y-0.5 text-base"
               >
                 {WA_ICON_SM}
-                Solicitar Lista de Precios
+                Solicitar catálogo
               </a>
               <a
                 href="#catalogo"

@@ -1,7 +1,12 @@
 import fs from 'fs'
 import path from 'path'
 import Image from 'next/image'
+import Link from 'next/link'
 import { fetchProductos, toPublico, ProductoPublico } from '@/lib/baserow'
+
+function formatARS(n: number) {
+  return n.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })
+}
 
 const DESTACADOS_IDS = [1, 3, 5]
 const IMAGEN_FALLBACK = '/productos/P001/chata17.webp'
@@ -54,39 +59,36 @@ export default async function ModelosDestacados() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {destacados.map((producto) => {
-              const imagen = getImagenProducto(producto.id)
-            const waText = encodeURIComponent(
-              `Hola! Me interesa la bombilla ${producto.nombre}. ¿Cuál es el precio por mayor?`
-            )
+            const imagen = getImagenProducto(producto.id)
             return (
-              <div
+              <Link
                 key={producto.id}
-                className="product-card group bg-surface-800/60 border border-surface-600/50 rounded-2xl overflow-hidden card-glow transition-all"
+                href={`/catalogo?p=${producto.id}`}
+                className="product-card group bg-surface-800/60 border border-surface-600/50 rounded-2xl overflow-hidden card-glow transition-all hover:border-brand-400/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30 block"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-amber-900/30 to-surface-800">
                   <Image
                     src={imagen}
                     alt={producto.nombre}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface-900/60 via-transparent to-transparent" />
                 </div>
                 <div className="p-5">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-bold text-white">{producto.nombre}</h3>
-                    <a
-                      href={`https://wa.me/5491112345678?text=${waText}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-brand-400 text-xs font-semibold hover:text-brand-300 transition-colors"
-                    >
-                      Cotizar →
-                    </a>
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="text-lg font-bold text-white leading-tight">{producto.nombre}</h3>
+                    <span className="text-brand-400 font-bold text-base shrink-0">
+                      {formatARS(producto.precio)}
+                    </span>
                   </div>
-                  <p className="text-stone-500 text-sm mt-2 leading-relaxed">{producto.descripcion}</p>
+                  <p className="text-stone-500 text-sm mt-2 leading-relaxed line-clamp-2">{producto.descripcion}</p>
+                  <p className="text-brand-400/70 text-xs mt-3 font-medium group-hover:text-brand-400 transition-colors">
+                    Ver en catálogo →
+                  </p>
                 </div>
-              </div>
+              </Link>
             )
           })}
         </div>

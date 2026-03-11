@@ -1,20 +1,25 @@
 const pasos = [
   {
     n: '1',
-    titulo: 'Pedí el catálogo',
-    texto: 'Contactanos por WhatsApp y recibí la lista de precios actual en el instante.',
+    titulo: 'Armá tu combo online',
+    texto: 'Ingresá a nuestro catálogo y elegí los modelos que mejor se vendan en tu zona.',
   },
   {
     n: '2',
-    titulo: 'Armá tu pedido',
-    texto: 'Elegí los modelos (mínimo 100 u. surtidos) y coordinemos el pago.',
+    titulo: 'Envianos tu cotización',
+    texto: (
+      <>
+        Seleccioná un mínimo de{' '}
+        <strong className="text-white">100 unidades</strong> surtidas. Se te calculará el total y te armará un mensaje automático para enviarnos por WhatsApp.
+      </>
+    ),
   },
   {
     n: '3',
     titulo: 'Recibí en tu local',
     texto: (
       <>
-        Despachamos en 24hs hábiles. Tu pedido llega en aproximadamente{' '}
+        Tu pedido llega en aproximadamente{' '}
         <strong className="text-white">1 semana</strong> a cualquier punto del país.
       </>
     ),

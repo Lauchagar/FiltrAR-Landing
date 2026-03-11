@@ -6,7 +6,7 @@ import type { ProductoPublico } from '@/lib/baserow'
 import PriceModal, { type ItemActualizado } from './PriceModal'
 
 const MIN_UNIDADES = 100
-const WA_NUMBER = '5491112345678'
+const WA_NUMBER = '5491151267426'
 
 function formatARS(n: number) {
   return n.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })
@@ -45,9 +45,10 @@ const WA_ICON = (
 interface Props {
   productos: ProductoPublico[]
   imagenes: Record<number, string>
+  highlightId?: number
 }
 
-export default function CatalogoCalculadora({ productos, imagenes }: Props) {
+export default function CatalogoCalculadora({ productos, imagenes, highlightId }: Props) {
   const [cantidades, setCantidades] = useState<Record<number, number>>(
     () => Object.fromEntries(productos.map((p) => [p.id, 0]))
   )
@@ -56,7 +57,9 @@ export default function CatalogoCalculadora({ productos, imagenes }: Props) {
   const [modalItems, setModalItems] = useState<ItemActualizado[] | null>(null)
   const [productosActuales, setProductosActuales] = useState(productos)
   const [staticInView, setStaticInView] = useState(false)
+  const [expandedIds, setExpandedIds] = useState<Set<number>>(new Set())
   const staticBarRef = useRef<HTMLDivElement>(null)
+  const cardRefs = useRef<Map<number, HTMLDivElement>>(new Map())
 
   useEffect(() => {
     const el = staticBarRef.current
@@ -67,6 +70,27 @@ export default function CatalogoCalculadora({ productos, imagenes }: Props) {
     )
     observer.observe(el)
     return () => observer.disconnect()
+  }, [])
+
+  // Scroll al producto destacado y animar su borde
+  useEffect(() => {
+    if (!highlightId) return
+    const card = cardRefs.current.get(highlightId)
+    if (!card) return
+    const timeout = setTimeout(() => {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      card.classList.add('card-highlight')
+      card.addEventListener('animationend', () => card.classList.remove('card-highlight'), { once: true })
+    }, 300)
+    return () => clearTimeout(timeout)
+  }, [highlightId])
+
+  const toggleExpanded = useCallback((id: number) => {
+    setExpandedIds((prev) => {
+      const next = new Set(prev)
+      next.has(id) ? next.delete(id) : next.add(id)
+      return next
+    })
   }, [])
 
   const totalUnidades = useMemo(
@@ -192,9 +216,12 @@ export default function CatalogoCalculadora({ productos, imagenes }: Props) {
         {productosActuales.map((p) => {
           const cantidad = cantidades[p.id] ?? 0
           const imagen = imagenes[p.id]
+          const expanded = expandedIds.has(p.id)
+          const descLarga = p.descripcion.length > 100
           return (
             <div
               key={p.id}
+              ref={(el) => { if (el) cardRefs.current.set(p.id, el) }}
               className={`group bg-surface-800/60 border rounded-2xl overflow-hidden transition-all duration-300 flex flex-col ${
                 cantidad > 0
                   ? 'border-brand-400/60 shadow-lg shadow-brand-400/10'
@@ -222,9 +249,17 @@ export default function CatalogoCalculadora({ productos, imagenes }: Props) {
               <div className="p-5 flex flex-col flex-1 gap-3">
                 <div className="flex-1">
                   <h3 className="text-base font-bold text-white leading-tight">{p.nombre}</h3>
-                  <p className="text-stone-500 text-sm mt-1.5 leading-relaxed line-clamp-2">
+                  <p className={`text-stone-500 text-sm mt-1.5 leading-relaxed ${expanded ? '' : 'line-clamp-2'}`}>
                     {p.descripcion}
                   </p>
+                  {descLarga && (
+                    <button
+                      onClick={() => toggleExpanded(p.id)}
+                      className="text-brand-400/70 hover:text-brand-400 text-xs mt-1 transition-colors"
+                    >
+                      {expanded ? 'Ver menos ↑' : 'Ver más ↓'}
+                    </button>
+                  )}
                 </div>
 
                 {/* Precio + contador */}

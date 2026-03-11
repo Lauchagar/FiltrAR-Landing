@@ -288,6 +288,7 @@ export default function CatalogoCalculadora({ productos, imagenes, highlightId }
                       type="number"
                       min={0}
                       value={cantidad}
+                      onFocus={(e) => e.target.select()}
                       onChange={(e) => cambiarCantidad(p.id, parseInt(e.target.value) || 0)}
                       className="w-12 h-9 text-center bg-surface-700/40 text-white font-bold text-sm border-x border-surface-600/60 focus:outline-none focus:bg-surface-700"
                       aria-label={`Cantidad de ${p.nombre}`}

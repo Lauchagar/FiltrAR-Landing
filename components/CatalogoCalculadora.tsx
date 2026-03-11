@@ -1,9 +1,9 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import Image from 'next/image'
 import type { ProductoPublico } from '@/lib/baserow'
 import PriceModal, { type ItemActualizado } from './PriceModal'
+import ImagenCarousel from './ImagenCarousel'
 
 const MIN_UNIDADES = 100
 const WA_NUMBER = '5491151267426'
@@ -44,7 +44,7 @@ const WA_ICON = (
 
 interface Props {
   productos: ProductoPublico[]
-  imagenes: Record<number, string>
+  imagenes: Record<number, string[]>
   highlightId?: number
 }
 
@@ -219,7 +219,7 @@ export default function CatalogoCalculadora({ productos, imagenes, highlightId }
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {productosActuales.map((p) => {
           const cantidad = cantidades[p.id] ?? 0
-          const imagen = imagenes[p.id]
+          const imagenesProd = imagenes[p.id] ?? []
           const expanded = expandedIds.has(p.id)
           const descLarga = p.descripcion.length > 100
           return (
@@ -234,16 +234,10 @@ export default function CatalogoCalculadora({ productos, imagenes, highlightId }
             >
               {/* Imagen */}
               <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-amber-900/20 to-surface-700">
-                <Image
-                  src={imagen}
-                  alt={p.nombre}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface-900/70 via-transparent to-transparent" />
+                <ImagenCarousel imagenes={imagenesProd} alt={p.nombre} />
+                <div className="absolute inset-0 bg-gradient-to-t from-surface-900/70 via-transparent to-transparent pointer-events-none" />
                 {cantidad > 0 && (
-                  <div className="absolute top-3 right-3 bg-brand-400 text-surface-950 text-xs font-bold px-2.5 py-1 rounded-full">
+                  <div className="absolute top-3 right-3 bg-brand-400 text-surface-950 text-xs font-bold px-2.5 py-1 rounded-full z-10">
                     {cantidad} u.
                   </div>
                 )}

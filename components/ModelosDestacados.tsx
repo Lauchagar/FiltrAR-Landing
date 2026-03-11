@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
-import Image from 'next/image'
 import Link from 'next/link'
 import { fetchProductos, toPublico, ProductoPublico } from '@/lib/baserow'
+import ImagenCarousel from '@/components/ImagenCarousel'
 
 function formatARS(n: number) {
   return n.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })
@@ -11,16 +11,24 @@ function formatARS(n: number) {
 const DESTACADOS_IDS = [1, 3, 5]
 const IMAGEN_FALLBACK = '/productos/P001/chata17.webp'
 
-function getImagenProducto(id: number): string {
+function getImagenesProducto(id: number): string[] {
   const carpeta = `P${String(id).padStart(3, '0')}`
   const dirPath = path.join(process.cwd(), 'public', 'productos', carpeta)
   try {
-    const archivos = fs.readdirSync(dirPath).filter((f) => !f.startsWith('.'))
-    if (archivos.length > 0) return `/productos/${carpeta}/${archivos[0]}`
+    const archivos = fs
+      .readdirSync(dirPath)
+      .filter((f) => !f.startsWith('.'))
+      .sort((a, b) => {
+        const na = parseInt(path.parse(a).name, 10)
+        const nb = parseInt(path.parse(b).name, 10)
+        if (!isNaN(na) && !isNaN(nb)) return na - nb
+        return a.localeCompare(b)
+      })
+    if (archivos.length > 0) return archivos.map((f) => `/productos/${carpeta}/${f}`)
   } catch {
     // carpeta no existe
   }
-  return IMAGEN_FALLBACK
+  return [IMAGEN_FALLBACK]
 }
 
 export default async function ModelosDestacados() {
@@ -59,7 +67,7 @@ export default async function ModelosDestacados() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {destacados.map((producto) => {
-            const imagen = getImagenProducto(producto.id)
+            const imagenes = getImagenesProducto(producto.id)
             return (
               <Link
                 key={producto.id}
@@ -67,14 +75,8 @@ export default async function ModelosDestacados() {
                 className="product-card group bg-surface-800/60 border border-surface-600/50 rounded-2xl overflow-hidden card-glow transition-all hover:border-brand-400/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30 block"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-amber-900/30 to-surface-800">
-                  <Image
-                    src={imagen}
-                    alt={producto.nombre}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface-900/60 via-transparent to-transparent" />
+                  <ImagenCarousel imagenes={imagenes} alt={producto.nombre} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface-900/60 via-transparent to-transparent pointer-events-none" />
                 </div>
                 <div className="p-5">
                   <div className="flex items-center justify-between gap-2">

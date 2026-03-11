@@ -11,16 +11,24 @@ export const revalidate = 60
 
 const IMAGEN_FALLBACK = '/productos/P001/chata17.webp'
 
-function getImagenProducto(id: number): string {
+function getImagenesProducto(id: number): string[] {
   const carpeta = `P${String(id).padStart(3, '0')}`
   const dirPath = path.join(process.cwd(), 'public', 'productos', carpeta)
   try {
-    const archivos = fs.readdirSync(dirPath).filter((f) => !f.startsWith('.'))
-    if (archivos.length > 0) return `/productos/${carpeta}/${archivos[0]}`
+    const archivos = fs
+      .readdirSync(dirPath)
+      .filter((f) => !f.startsWith('.'))
+      .sort((a, b) => {
+        const na = parseInt(path.parse(a).name, 10)
+        const nb = parseInt(path.parse(b).name, 10)
+        if (!isNaN(na) && !isNaN(nb)) return na - nb
+        return a.localeCompare(b)
+      })
+    if (archivos.length > 0) return archivos.map((f) => `/productos/${carpeta}/${f}`)
   } catch {
     // carpeta no existe
   }
-  return IMAGEN_FALLBACK
+  return [IMAGEN_FALLBACK]
 }
 
 export default async function CatalogoPage({
@@ -41,7 +49,7 @@ export default async function CatalogoPage({
     error = true
   }
 
-  const imagenes = Object.fromEntries(productos.map((p) => [p.id, getImagenProducto(p.id)]))
+  const imagenes = Object.fromEntries(productos.map((p) => [p.id, getImagenesProducto(p.id)]))
 
   return (
     <>

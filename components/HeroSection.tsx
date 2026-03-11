@@ -50,7 +50,7 @@ export default function HeroSection() {
               <div className="absolute -inset-4 bg-gradient-to-br from-brand-400/20 via-transparent to-brand-700/10 rounded-3xl blur-2xl" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src='/productos/hero.jpeg'
+                src='/hero.jpeg'
                 alt="Mate argentino con bombilla de acero inoxidable"
                 className="relative w-full h-auto rounded-2xl object-cover shadow-2xl shadow-black/50"
                 loading="eager"

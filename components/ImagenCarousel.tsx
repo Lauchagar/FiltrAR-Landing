@@ -34,7 +34,7 @@ export default function ImagenCarousel({ imagenes, alt, sizes, priority = false 
         fill
         className="object-cover transition-opacity duration-300"
         sizes={sizes ?? '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'}
-        priority={priority}
+        priority={priority && idx === 0}
       />
 
       {total > 1 && (

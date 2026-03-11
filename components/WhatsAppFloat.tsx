@@ -1,13 +1,21 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 const WA_LINK =
   'https://wa.me/5491151267426?text=Hola!%20Quiero%20solicitar%20el%20cat%C3%A1logo%20de%20precios%20mayoristas'
 
 export default function WhatsAppFloat() {
   const [visible, setVisible] = useState(true)
+  const [catalogoHasUnits, setCatalogoHasUnits] = useState(false)
   const footerRef = useRef<Element | null>(null)
+  const pathname = usePathname()
+  const isCatalogo = pathname === '/catalogo'
+
+  useEffect(() => {
+    setCatalogoHasUnits(false)
+  }, [pathname])
 
   useEffect(() => {
     footerRef.current = document.querySelector('footer')
@@ -20,13 +28,25 @@ export default function WhatsAppFloat() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
+  useEffect(() => {
+    if (!isCatalogo) return
+    const handler = (e: Event) => {
+      const total = (e as CustomEvent<number>).detail
+      setCatalogoHasUnits(total > 0)
+    }
+    window.addEventListener('catalogo-unidades', handler)
+    return () => window.removeEventListener('catalogo-unidades', handler)
+  }, [isCatalogo])
+
+  const hiddenOnMobileCatalogo = isCatalogo && catalogoHasUnits
+
   return (
     <a
       href={WA_LINK}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"
-      className="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#1fb855] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-xl shadow-[#25D366]/30 transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#25D366]/40 animate-pulse-soft"
+      className={`fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#1fb855] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-xl shadow-[#25D366]/30 transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#25D366]/40 animate-pulse-soft ${hiddenOnMobileCatalogo ? 'hidden sm:flex' : ''}`}
       style={{ opacity: visible ? 1 : 0, pointerEvents: visible ? 'auto' : 'none' }}
     >
       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">

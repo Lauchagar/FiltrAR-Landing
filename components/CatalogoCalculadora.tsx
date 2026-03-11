@@ -101,6 +101,10 @@ export default function CatalogoCalculadora({ productos, imagenes, highlightId }
     () => productosActuales.reduce((acc, p) => acc + (cantidades[p.id] ?? 0) * p.precio, 0),
     [productosActuales, cantidades]
   )
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('catalogo-unidades', { detail: totalUnidades }))
+  }, [totalUnidades])
+
   const progreso = Math.min((totalUnidades / MIN_UNIDADES) * 100, 100)
   const faltanUnidades = Math.max(MIN_UNIDADES - totalUnidades, 0)
   const pedidoValido = totalUnidades >= MIN_UNIDADES
@@ -161,19 +165,19 @@ export default function CatalogoCalculadora({ productos, imagenes, highlightId }
 
   const barraContenido = (
     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-4 sm:gap-6">
         <div>
           <p className="text-stone-500 text-xs">Total estimado</p>
           <p className="text-2xl font-black text-white leading-tight">{formatARS(totalPrecio)}</p>
         </div>
-        <div className="hidden sm:block h-10 w-px bg-surface-600/60" />
-        <div className="hidden sm:block">
-          <p className={`text-sm font-medium ${pedidoValido ? 'text-brand-400' : 'text-stone-400'}`}>
+        <div className="h-10 w-px bg-surface-600/60" />
+        <div>
+          <p className={`text-xs sm:text-sm font-medium ${pedidoValido ? 'text-brand-400' : 'text-stone-400'}`}>
             {pedidoValido
               ? `✓ ${totalUnidades} unidades — listo para pedir`
               : `Faltan ${faltanUnidades} u. para el mínimo de ${MIN_UNIDADES}`}
           </p>
-          <p className="text-stone-600 text-xs mt-0.5">Precio confirmado por el vendedor vía WhatsApp</p>
+          <p className="text-stone-600 text-xs mt-0.5 hidden sm:block">Precio confirmado por el vendedor vía WhatsApp</p>
         </div>
       </div>
 

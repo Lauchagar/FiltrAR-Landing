@@ -75,7 +75,12 @@ export default async function ModelosDestacados() {
                 className="product-card group bg-surface-800/60 border border-surface-600/50 rounded-2xl overflow-hidden card-glow transition-all hover:border-brand-400/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30 block"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-amber-900/30 to-surface-800">
-                  <ImagenCarousel imagenes={imagenes} alt={producto.nombre} />
+                  <ImagenCarousel
+                    imagenes={imagenes}
+                    alt={producto.nombre}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-surface-900/60 via-transparent to-transparent pointer-events-none" />
                 </div>
                 <div className="p-5">

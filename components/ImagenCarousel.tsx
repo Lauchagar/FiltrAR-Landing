@@ -7,9 +7,10 @@ interface Props {
   imagenes: string[]
   alt: string
   sizes?: string
+  priority?: boolean
 }
 
-export default function ImagenCarousel({ imagenes, alt, sizes }: Props) {
+export default function ImagenCarousel({ imagenes, alt, sizes, priority = false }: Props) {
   const [idx, setIdx] = useState(0)
   const total = imagenes.length
 
@@ -32,7 +33,8 @@ export default function ImagenCarousel({ imagenes, alt, sizes }: Props) {
         alt={alt}
         fill
         className="object-cover transition-opacity duration-300"
-        sizes={sizes ?? '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
+        sizes={sizes ?? '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'}
+        priority={priority}
       />
 
       {total > 1 && (

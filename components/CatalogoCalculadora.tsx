@@ -217,11 +217,12 @@ export default function CatalogoCalculadora({ productos, imagenes, highlightId }
     <>
       {/* Grilla de productos */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {productosActuales.map((p) => {
+        {productosActuales.map((p, index) => {
           const cantidad = cantidades[p.id] ?? 0
           const imagenesProd = imagenes[p.id] ?? []
           const expanded = expandedIds.has(p.id)
           const descLarga = p.descripcion.length > 100
+          const isAboveFold = index < 3
           return (
             <div
               key={p.id}
@@ -234,7 +235,12 @@ export default function CatalogoCalculadora({ productos, imagenes, highlightId }
             >
               {/* Imagen */}
               <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-amber-900/20 to-surface-700">
-                <ImagenCarousel imagenes={imagenesProd} alt={p.nombre} />
+                <ImagenCarousel
+                  imagenes={imagenesProd}
+                  alt={p.nombre}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={isAboveFold}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-surface-900/70 via-transparent to-transparent pointer-events-none" />
                 {cantidad > 0 && (
                   <div className="absolute top-3 right-3 bg-brand-400 text-surface-950 text-xs font-bold px-2.5 py-1 rounded-full z-10">

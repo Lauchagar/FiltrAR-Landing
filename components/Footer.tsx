@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const WA_LINK =
   'https://wa.me/5491151267426?text=Hola!%20Quiero%20solicitar%20el%20cat%C3%A1logo%20de%20precios%20mayoristas'
 
@@ -16,9 +18,15 @@ export default function Footer() {
                 className="h-9 w-auto object-contain"
               />
             </div>
-            <p className="text-stone-600 text-xs leading-relaxed max-w-[180px]">
+            <p className="text-stone-600 text-xs leading-relaxed max-w-[180px] mb-3">
               Fábrica y distribuidora mayorista de bombillas. Argentina.
             </p>
+            <Link
+              href="/nosotros"
+              className="text-xs text-stone-500 hover:text-brand-400 font-medium transition-colors"
+            >
+              Sobre Nosotros →
+            </Link>
           </div>
 
           {/* Contacto */}

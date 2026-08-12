@@ -50,6 +50,9 @@ export default function Navbar() {
             </a>
 
             <div className="hidden md:flex items-center gap-8">
+              <a href="/nosotros" className="text-sm text-stone-400 hover:text-brand-400 transition-colors">
+                Nosotros
+              </a>
               <a href={href('#combos')} className="text-sm text-stone-400 hover:text-brand-400 transition-colors">
                 Combos
               </a>
@@ -102,6 +105,7 @@ export default function Navbar() {
         </div>
         <div className="flex flex-col p-6 gap-6">
           {[
+            { h: '/nosotros', label: 'Nosotros' },
             { h: href('#combos'), label: 'Combos' },
             { h: '/catalogo', label: 'Catálogo' },
             { h: href('#como-funciona'), label: 'Cómo funciona' },

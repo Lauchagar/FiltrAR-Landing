@@ -54,6 +54,9 @@ export default function HeroSection() {
                 alt="Mate argentino con bombilla de acero inoxidable"
                 className="relative w-full h-auto rounded-2xl object-cover shadow-2xl shadow-black/50"
                 loading="eager"
+                fetchPriority="high"
+                width={1050}
+                height={1400}
               />
             </div>
           </div>

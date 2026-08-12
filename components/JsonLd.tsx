@@ -14,7 +14,7 @@ export default function JsonLd() {
         url: 'https://filtrargentina.cloud',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://filtrargentina.cloud/logo_nuevo.png',
+          url: 'https://filtrargentina.cloud/logo_nuevo.webp',
         },
         contactPoint: {
           '@type': 'ContactPoint',

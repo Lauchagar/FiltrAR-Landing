@@ -13,7 +13,7 @@ export default function Footer() {
           <div>
             <div className="mb-3">
               <img
-                src="/logo_nuevo.png"
+                src="/logo_nuevo.webp"
                 alt="FiltrAR"
                 className="h-9 w-auto object-contain"
               />

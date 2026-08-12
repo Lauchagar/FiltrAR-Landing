@@ -39,7 +39,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 lg:h-20">
             <a href="/" className="flex items-center">
               <Image
-                src="/logo_nuevo.png"
+                src="/logo_nuevo.webp"
                 alt="FiltrAR"
                 width={120}
                 height={48}
@@ -94,7 +94,7 @@ export default function Navbar() {
           }`}
       >
         <div className="flex items-center justify-between p-4 border-b border-surface-600">
-          <img src="/logo_nuevo.png" alt="FiltrAR" className="h-8 w-auto object-contain" />
+          <img src="/logo_nuevo.webp" alt="FiltrAR" className="h-8 w-auto object-contain" />
           <button onClick={closeMenu} className="text-white p-2" aria-label="Cerrar menú">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

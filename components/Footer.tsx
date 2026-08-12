@@ -58,7 +58,7 @@ export default function Footer() {
               </svg>
               Pedí el catálogo
             </a>
-            <p className="text-stone-600 text-xs">Mín. 100 unidades surtidas</p>
+            <p className="text-stone-600 text-xs">Mín. 50 unidades surtidas</p>
           </div>
         </div>
 

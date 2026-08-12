@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { ProductoPublico } from '@/lib/baserow'
 import PriceModal, { type ItemActualizado } from './PriceModal'
 
-const MIN_UNIDADES = 100
+const MIN_UNIDADES = 50
 const WA_NUMBER = '5491151267426'
 
 function formatARS(n: number) {

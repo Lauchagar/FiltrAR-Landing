@@ -20,7 +20,7 @@ export default function CombosSection() {
           <p className="text-stone-400 text-lg leading-relaxed">
             Podés combinar libremente distintos modelos del catálogo y armar tu propio combo. El único
             requisito es llegar a un{' '}
-            <strong className="text-white">mínimo de 100 unidades en total</strong>.
+            <strong className="text-white">mínimo de 50 unidades en total</strong>.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <a

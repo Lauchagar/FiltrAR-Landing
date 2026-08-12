@@ -10,7 +10,7 @@ const pasos = [
     texto: (
       <>
         Seleccioná un mínimo de{' '}
-        <strong className="text-white">100 unidades</strong> surtidas. Se te calculará el total y te armará un mensaje automático para enviarnos por WhatsApp.
+        <strong className="text-white">50 unidades</strong> surtidas. Se te calculará el total y te armará un mensaje automático para enviarnos por WhatsApp.
       </>
     ),
   },

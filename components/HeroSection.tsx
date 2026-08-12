@@ -23,7 +23,7 @@ export default function HeroSection() {
             <p className="text-stone-400 text-lg sm:text-xl leading-relaxed max-w-xl">
               Venta directa de fábrica para distribuidores y comercios. Alta calidad en acero inoxidable
               304 de primera calidad.{' '}
-              <strong className="text-white font-semibold">Pedido mínimo 100 unidades.</strong>
+              <strong className="text-white font-semibold">Pedido mínimo 50 unidades.</strong>
             </p>
 
             <div className="flex flex-wrap gap-4">

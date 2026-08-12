@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import fs from 'fs'
 import path from 'path'
 import Link from 'next/link'
@@ -7,7 +8,23 @@ import Footer from '@/components/Footer'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
 import CatalogoCalculadora from '@/components/CatalogoCalculadora'
 
+export const metadata: Metadata = {
+  title: 'Catálogo de Bombillas para Mate por Mayor',
+  description:
+    'Explorá todos los modelos de bombillas para mate disponibles en FiltrAR. Acero inoxidable 304, varios estilos y medidas. Armá tu pedido mayorista desde 50 unidades y recibilo en todo el país.',
+  alternates: {
+    canonical: 'https://filtrargentina.cloud/catalogo',
+  },
+  openGraph: {
+    title: 'Catálogo de Bombillas para Mate por Mayor | FiltrAR',
+    description:
+      'Todos los modelos de bombillas para mate de FiltrAR. Acero inoxidable 304. Pedido mínimo 50 unidades. Envíos a todo el país.',
+    url: 'https://filtrargentina.cloud/catalogo',
+  },
+}
+
 export const revalidate = 60
+
 
 const IMAGEN_FALLBACK = '/productos/P001/chata17.webp'
 
@@ -73,7 +90,7 @@ export default async function CatalogoPage({
               <span className="text-brand-400">Bombillas</span>
             </h1>
             <p className="text-stone-400 text-lg mt-3 max-w-xl">
-              Sumá las unidades que quieras de cada modelo. Mínimo 100 unidades en total para hacer el pedido.
+              Sumá las unidades que quieras de cada modelo. Mínimo 50 unidades en total para hacer el pedido.
             </p>
             <div className="flex items-center gap-2 mt-4">
               <span className="w-2 h-2 rounded-full bg-brand-400" />

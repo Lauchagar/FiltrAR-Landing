@@ -6,16 +6,16 @@ import Footer from '@/components/Footer'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
 
 export const metadata: Metadata = {
-  title: 'Sobre Nosotros | Fábrica de Bombillas desde 2001',
+  title: 'Sobre Nosotros | Fábrica de Bombillas desde 2010',
   description:
-    'Conocé la historia de FiltrAR: empresa familiar argentina con más de 20 años de trayectoria fabricando y comercializando bombillas para mate de acero inoxidable 304.',
+    'Conocé la historia de FiltrAR: empresa familiar argentina con más de 15 años de trayectoria fabricando y comercializando bombillas para mate de acero inoxidable 304.',
   alternates: {
     canonical: 'https://filtrargentina.cloud/nosotros',
   },
   openGraph: {
     title: 'Sobre Nosotros | FiltrAR — Pasión por el Mate e Industria Argentina',
     description:
-      'Empresa familiar con más de 20 años fabricando bombillas para mate de alta calidad. Conocé nuestra historia y compromiso con el país.',
+      'Empresa familiar con más de 15 años fabricando bombillas para mate de alta calidad. Conocé nuestra historia y compromiso con el país.',
     url: 'https://filtrargentina.cloud/nosotros',
   },
 }
@@ -84,9 +84,6 @@ export default function NosotrosPage() {
                 </svg>
                 Volver al inicio
               </Link>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-400/10 border border-brand-400/20 text-brand-400 text-xs font-semibold uppercase tracking-wider mb-4">
-                Desde el 2001 &middot; Más de 20 años de historia
-              </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15]">
                 Pasión por el mate, <span className="text-brand-400 italic">compromiso</span> con la calidad.
               </h1>
@@ -102,11 +99,11 @@ export default function NosotrosPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div>
-                <p className="text-3xl sm:text-4xl font-black text-brand-400">+20</p>
+                <p className="text-3xl sm:text-4xl font-black text-brand-400">+15</p>
                 <p className="text-stone-400 text-xs sm:text-sm font-medium mt-1">Años de Trayectoria</p>
               </div>
               <div>
-                <p className="text-3xl sm:text-4xl font-black text-white">2001</p>
+                <p className="text-3xl sm:text-4xl font-black text-white">2010</p>
                 <p className="text-stone-400 text-xs sm:text-sm font-medium mt-1">Año de Fundación</p>
               </div>
               <div>
@@ -160,7 +157,7 @@ export default function NosotrosPage() {
                   Sobre Nosotros
                 </h2>
                 <p className="text-stone-400 leading-relaxed">
-                  Somos una <strong className="text-white">empresa familiar con más de 20 años de trayectoria</strong>, dedicada a la fabricación de productos regionales de alta calidad desde el año 2001. Nos encargamos de la comercialización de nuestros productos, con el firme compromiso de llevar lo mejor de nuestra tradición a cada rincón del país.
+                  Somos una <strong className="text-white">empresa familiar con más de 15 años de trayectoria</strong>, dedicada a la fabricación de productos regionales de alta calidad desde el año 2010. Nos encargamos de la comercialización de nuestros productos, con el firme compromiso de llevar lo mejor de nuestra tradición a cada rincón del país.
                 </p>
                 <p className="text-stone-400 leading-relaxed">
                   A lo largo de los años, nos hemos enfocado en crear productos que no solo cumplen con los más altos estándares de calidad, sino que también reflejan el espíritu y la esencia de nuestra cultura. Buscamos ofrecer a negocios y emprendimientos soluciones confiables y de excelencia, para que puedan disfrutar de lo mejor del mercado.

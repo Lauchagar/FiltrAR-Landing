@@ -32,9 +32,8 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'navbar-scrolled' : ''
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'navbar-scrolled' : ''
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
@@ -50,9 +49,6 @@ export default function Navbar() {
             </a>
 
             <div className="hidden md:flex items-center gap-8">
-              <a href="/nosotros" className="text-sm text-stone-400 hover:text-brand-400 transition-colors">
-                Nosotros
-              </a>
               <a href={href('#combos')} className="text-sm text-stone-400 hover:text-brand-400 transition-colors">
                 Combos
               </a>
@@ -64,6 +60,9 @@ export default function Navbar() {
               </a>
               <a href={href('#contacto')} className="text-sm text-stone-400 hover:text-brand-400 transition-colors">
                 Contacto
+              </a>
+              <a href="/nosotros" className="text-sm text-stone-400 hover:text-brand-400 transition-colors">
+                Nosotros
               </a>
               <a
                 href={WA_LINK}
@@ -91,9 +90,8 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`mobile-menu fixed inset-y-0 right-0 w-72 bg-surface-800 z-50 md:hidden shadow-2xl ${
-          menuOpen ? 'open' : ''
-        }`}
+        className={`mobile-menu fixed inset-y-0 right-0 w-72 bg-surface-800 z-50 md:hidden shadow-2xl ${menuOpen ? 'open' : ''
+          }`}
       >
         <div className="flex items-center justify-between p-4 border-b border-surface-600">
           <img src="/logo_nuevo.png" alt="FiltrAR" className="h-8 w-auto object-contain" />
@@ -105,11 +103,11 @@ export default function Navbar() {
         </div>
         <div className="flex flex-col p-6 gap-6">
           {[
-            { h: '/nosotros', label: 'Nosotros' },
             { h: href('#combos'), label: 'Combos' },
             { h: '/catalogo', label: 'Catálogo' },
             { h: href('#como-funciona'), label: 'Cómo funciona' },
             { h: href('#contacto'), label: 'Contacto' },
+            { h: '/nosotros', label: 'Nosotros' },
           ].map(({ h, label }) => (
             <a
               key={h}
